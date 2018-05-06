@@ -94,9 +94,18 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-# IPPOOL = [
-#     {"ipaddr": "ip:port"}
-# ]
+IPPOOL = [
+    {"ipaddr": "118.212.137.135:31288"},
+    {"ipaddr": "114.215.95.188:3128"},
+    {"ipaddr": "123.56.75.209:3128"},
+    {"ipaddr": "218.72.66.244:18118"},
+    {"ipaddr": "120.86.90.2:8118"},
+    {"ipaddr": "113.215.35.50:8118"},
+    {"ipaddr": "218.72.66.123:18118"},
+    {"ipaddr": "60.177.231.187:18118"},
+    {"ipaddr": "218.72.65.98:18118"},
+    {"ipaddr": "117.69.230.119:61234"},
+]
 
 # 使用Redis去重类
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
