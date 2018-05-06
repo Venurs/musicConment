@@ -5,12 +5,15 @@ from musicComment.items import UserItem
 import json
 from jsonpath import jsonpath
 import time
+from scrapy_redis.spiders import RedisSpider
 
 
-class FriendconmentSpider(scrapy.Spider):
+class FriendconmentSpider(RedisSpider):
     name = 'friendConment'
     allowed_domains = ['music.163.com']
-    start_urls = ['http://music.163.com/api/v1/resource/comments/R_SO_4_437250607?limit=15&offset=15']
+    redis_key = "friendConment:start_url"
+
+    # start_urls = ['http://music.163.com/api/v1/resource/comments/R_SO_4_437250607?limit=15&offset=15']
     url = "http://music.163.com/api/v1/resource/comments/R_SO_4_437250607?limit={}&offset={}"
     user_url = "http://music.163.com/api/playlist/detail?id={}"
     offset = 15

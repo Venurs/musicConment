@@ -23,6 +23,7 @@ USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' \
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
+# Scrapy downloader 并发请求(concurrent requests)的最大值
 #CONCURRENT_REQUESTS = 32
 
 # Configure a delay for requests for the same website (default: 0)
@@ -30,7 +31,9 @@ ROBOTSTXT_OBEY = False
 # See also autothrottle settings and docs
 DOWNLOAD_DELAY = 1
 # The download delay setting will honor only one of:
+# 单个网站请求并发的最大值
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
+# 单个ip并发请求的最大值
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
@@ -67,6 +70,7 @@ DEFAULT_REQUEST_HEADERS = {
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'musicComment.pipelines.MusiccommentPipeline': 300,
+    'scrapy_redis.pipelines.RedisPipeline': 400,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -89,3 +93,17 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# IPPOOL = [
+#     {"ipaddr": "ip:port"}
+# ]
+
+# 使用Redis去重类
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+# 是否允许暂停
+SCHEDULER_PERSIST = True
+
+# 指定redis
+REDIS_HOST = "47.93.0.208"
+REDIS_PORT = 6379
