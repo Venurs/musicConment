@@ -116,3 +116,6 @@ SCHEDULER_PERSIST = True
 # 指定redis
 REDIS_HOST = "47.93.0.208"
 REDIS_PORT = 6379
+# 日志登记
+LOG_LEVEL = 'INFO'
+LOG_FILE = "./log_file.txt"
